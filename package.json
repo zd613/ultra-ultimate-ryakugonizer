@@ -12,7 +12,9 @@
     "lint": "npm run lint:js && npm run lint:style"
   },
   "dependencies": {
+    "@types/kuromoji": "^0.1.1",
     "core-js": "^3.15.1",
+    "kuromoji": "^0.1.2",
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
