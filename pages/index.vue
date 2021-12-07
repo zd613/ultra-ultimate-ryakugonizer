@@ -78,10 +78,11 @@ export default Vue.extend({
       if (this.tokenizer === null) {
         return this.inputText
       }
+
       const result = this.tokenizer.tokenize(this.inputText)
       console.log(result)
 
-      const output = this.ryakugonizer?.ryakugonize(this.inputText) ?? ''
+      const output = this.ryakugonizer?.ryakugonize(this.inputText)
       this.result = output
     },
   },
