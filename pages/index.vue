@@ -47,6 +47,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { getTokenizer } from '@/lib/utils'
+import { Ryakugonizer } from '@/lib/ryakugo'
 
 export default Vue.extend({
   data() {
@@ -55,6 +56,7 @@ export default Vue.extend({
       inputText: '',
       tokenizer: null as any,
       result: null as any,
+      ryakugonizer: null as Ryakugonizer | null,
     }
   },
 
@@ -65,6 +67,7 @@ export default Vue.extend({
       console.log(this.tokenizer)
       console.log(this.tokenizer.tokenize('これはテストです。'))
 
+      this.ryakugonizer = new Ryakugonizer(this.tokenizer)
       this.loading = false
     }
     loadTokenizer()
@@ -77,7 +80,9 @@ export default Vue.extend({
       }
       const result = this.tokenizer.tokenize(this.inputText)
       console.log(result)
-      this.result = result
+
+      const output = this.ryakugonizer?.ryakugonize(this.inputText) ?? ''
+      this.result = output
     },
   },
 })
